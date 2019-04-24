@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{35388327-70b5-42d2-91f2-a7071a5e4e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2dfa9443-3310-478d-b51f-fcf1119c907b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sample">
+      <UniqueIdentifier>{2108c333-d4d1-4f67-84e3-9638da08a702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Node">
+      <UniqueIdentifier>{3a564e18-48d4-4999-b04b-dd7e6bf64597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\sample">
+      <UniqueIdentifier>{130d45c2-3827-4c49-983d-1c71d74225c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\c_Algorithm.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_douNode.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_List.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_Stack.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_String.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_Timer.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_Vector.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\listSample.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\main.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\stackSample.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\strSample.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\vecSample.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\SortAlgTimer.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_sinNode.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\sinListSample.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_SingleList.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_Queue.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\c_Algorithm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_DataTypedef.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_List.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_Stack.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_String.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_Timer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_Vector.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Node\c_douNode.h">
+      <Filter>include\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sample\sample.h">
+      <Filter>include\sample</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sample\util.h">
+      <Filter>include\sample</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Node\c_sinNode.h">
+      <Filter>include\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_SingleList.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\c_Queue.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
