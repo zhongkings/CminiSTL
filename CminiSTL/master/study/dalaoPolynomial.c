@@ -16,8 +16,8 @@ void PrintList(double duration[][points]);
 void PrintGraph(double duration[][points]);
 
 int dalaorun() {
-	double x;
-	scanf("%lf", &x);
+	float x;
+	scanf("%3f", &x);
 	clock_t start, stop;
 	double duration[2][points];
 	int i, cnt;

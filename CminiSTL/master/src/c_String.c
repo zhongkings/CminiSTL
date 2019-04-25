@@ -19,8 +19,11 @@ c_String* strAssignChars(c_CHAR *source) {
 	newStr->length = strlen(source);
 	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + ENDCHARBIT);
 	if (newStr->chars == C_NULL) return C_NULL;
-	strcpy(newStr->chars, source);
+	
+	for (int i = 0; i < newStr->length; i++)
+		newStr->chars[i] = source[i];
 
+	newStr->chars[newStr->length] = '\0';
 	return newStr;
 }
 

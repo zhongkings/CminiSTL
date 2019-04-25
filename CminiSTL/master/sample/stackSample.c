@@ -25,7 +25,7 @@ void Stackmain() {
 	StackIntPushback(stack, '/');
 	
 	while (!stackEmpty(stack)) {
-		StackPrintEx(stackTop(stack));
+		StackPrintEx(stackPopback(stack));
 	}
 
 	printf("\nstack size: %d\n", stack->size);

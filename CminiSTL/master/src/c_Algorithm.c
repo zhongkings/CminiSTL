@@ -1,11 +1,11 @@
 #include "c_Algorithm.h"
-#include "c_Vector.h"
+#include "c_ArrList.h"
 #include "c_List.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-static c_INT vecSequential_Search(c_Vector *vec, c_DATA *key) {
+static c_INT vecSequential_Search(c_ArrList *vec, c_DATA *key) {
 	c_INT i = 0;
 	vec->elements[vec->size] = key;
 
@@ -54,7 +54,7 @@ c_INT Sequential_Search(c_DATA *datapack, c_DATA *key) {
 	return search_value;
 }
 c_INT vecBinary_Search(c_DATA *datapack, c_DATA *key) {
-	c_Vector *vec = (c_Vector*)datapack;
+	c_ArrList *vec = (c_ArrList*)datapack;
 
 	c_INT low = 0;
 	c_INT height = vec->size - 1;
@@ -75,7 +75,7 @@ c_INT vecBinary_Search(c_DATA *datapack, c_DATA *key) {
 }
 
 //BubbleSort
-static c_VOID vecBubbleSort(c_Vector *vec, c_COMPAREVAR compvar) {
+static c_VOID vecBubbleSort(c_ArrList *vec, c_COMPAREVAR compvar) {
 	c_INT i, j;
 	c_BOOL flag = c_TRUE;
 	for (i = 0; i < vec->size && flag; i++) {
@@ -124,7 +124,7 @@ c_VOID BubbleSort(c_DATA *datapack, c_COMPAREVAR compvar) {
 }
 
 //SelectSort
-static c_VOID vecSelectSort(c_Vector *vec, c_COMPAREVAR compvar) {
+static c_VOID vecSelectSort(c_ArrList *vec, c_COMPAREVAR compvar) {
 	c_INT i, j, comp;
 	for (i = 0; i < vec->size - 1; i++) {
 		comp = i;
@@ -179,7 +179,7 @@ c_VOID SelectSort(c_DATA *datapack, c_COMPAREVAR compvar) {
 }
 
 //InsertSort
-static c_VOID vecInsertSort(c_Vector *vec, c_COMPAREVAR compvar) {
+static c_VOID vecInsertSort(c_ArrList *vec, c_COMPAREVAR compvar) {
 	c_INT i, j, flag = vec->size;
 
 	for (i = vec->size - 2; i >= 0; i--) {
@@ -228,7 +228,7 @@ c_VOID InsertSort(c_DATA *datapack, c_COMPAREVAR compvar) {
 }
 
 //ShellSort
-static c_VOID vecShellSort(c_Vector *vec, c_COMPAREVAR compvar) {
+static c_VOID vecShellSort(c_ArrList *vec, c_COMPAREVAR compvar) {
 	c_INT i, j;
 	c_INT increment = vec->size;
 	c_DATA *comp = C_NULL;

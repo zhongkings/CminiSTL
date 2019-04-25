@@ -1,7 +1,7 @@
-version 1.0
+﻿version 1.1
 
 数据结构：
-Vector
+ArrList
 List
 SingleList
 Queue
@@ -9,15 +9,14 @@ Stack
 String
 
 算法：
-Sort:
 BubbleSort
 SelectSort
 InsertSort
 ShellsSort
-
-Search:
 Binary_Search
 
+数学:
+c_Vectorx
 
 工具:
 Timer

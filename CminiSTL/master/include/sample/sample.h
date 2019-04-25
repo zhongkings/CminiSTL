@@ -7,8 +7,13 @@
 #include "c_Timer.h"
 #include "util.h"
 
-void Vecmain();
+void Arrmain();
 void Listmain();
 void sinListmain();
 void Stackmain();
 void Stringmain();
+void Math3Dmain();
+
+
+//ѧϰ
+void stduyMain();

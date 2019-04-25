@@ -18,7 +18,7 @@ c_VOID stackPushback(c_Stack *sourceTar, c_DATA *data) {
 	sinlistPushback(sourceTar, data);
 }
 
-c_DATA* stackTop(c_Stack *sourceTar) {
+c_DATA* stackPopback(c_Stack *sourceTar) {
 	return sinlistPopback(sourceTar);
 }
 
@@ -39,7 +39,7 @@ c_VOID stackClear(c_Stack *sourceTar) {
 }
 
 //Node
-c_sinNode* stackTopNode(c_Stack *sourceTar) {
+c_sinNode* stackPopNode(c_Stack *sourceTar) {
 	return sinlistBackNode(sourceTar);
 }
 

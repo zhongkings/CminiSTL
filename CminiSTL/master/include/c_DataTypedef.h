@@ -11,6 +11,7 @@ typedef short          c_SHORT;
 typedef unsigned short c_USHORT;
 typedef unsigned short c_WCHAR;
 typedef char           c_CHAR;
+typedef unsigned char  c_UCHAR;
 typedef unsigned char  c_BYTE;
 typedef void           c_DATA;
 typedef void           c_VOID;

@@ -1,11 +1,11 @@
-#include "c_Vector.h"
+#include "c_ArrList.h"
 #include <stdlib.h>
 #include <string.h>
 
-c_Vector* vecCreate() {
-	c_Vector * newVec = NULL;
+c_ArrList* arrCreate() {
+	c_ArrList * newVec = NULL;
 
-	newVec = C_MALLOC(c_Vector*, sizeof(c_Vector), 1);
+	newVec = C_MALLOC(c_ArrList*, sizeof(c_ArrList), 1);
 
 	newVec->size = 0;
 	newVec->capacity = 10;
@@ -16,10 +16,10 @@ c_Vector* vecCreate() {
 	return newVec;
 }
 
-c_Vector* vecCreateformLength(c_INT capacity) {
+c_ArrList* arrCreateformLength(c_INT capacity) {
 	if (capacity < 0) return C_NULL;
 
-	c_Vector * newVec = C_MALLOC(c_Vector*, sizeof(c_Vector), 1);
+	c_ArrList * newVec = C_MALLOC(c_ArrList*, sizeof(c_ArrList), 1);
 
 	newVec->size = 0;
 	newVec->capacity = capacity;
@@ -30,8 +30,8 @@ c_Vector* vecCreateformLength(c_INT capacity) {
 	return newVec;
 }
 
-c_Vector* vecCreateformVector(c_Vector *source) {
-	c_Vector * newVec = C_MALLOC(c_Vector*, sizeof(c_Vector), 1);
+c_ArrList* arrCreateformVector(c_ArrList *source) {
+	c_ArrList * newVec = C_MALLOC(c_ArrList*, sizeof(c_ArrList), 1);
 
 	newVec->size = source->size;
 	newVec->capacity = source->capacity;
@@ -45,7 +45,7 @@ c_Vector* vecCreateformVector(c_Vector *source) {
 	return newVec;
 }
 
-c_VOID vecInsert(c_Vector *sourceTar, c_DATA *data, c_INT index) {
+c_VOID arrInsert(c_ArrList *sourceTar, c_DATA *data, c_INT index) {
 	if ((sourceTar->size + 1) >= sourceTar->capacity) {
 		sourceTar->capacity *= 1.5;
 		c_DATA **new_elements = C_MALLOC(c_DATA**, sizeof(c_DATA*), sourceTar->capacity);
@@ -63,7 +63,7 @@ c_VOID vecInsert(c_Vector *sourceTar, c_DATA *data, c_INT index) {
 	sourceTar->size++;
 }
 
-c_VOID vecPushback(c_Vector *sourceTar, c_DATA *data) {
+c_VOID arrPushback(c_ArrList *sourceTar, c_DATA *data) {
 	//判断是否只剩下一个位置
 	if ((sourceTar->size + 1) >= sourceTar->capacity) {
 		sourceTar->capacity *= 1.5; //增加1.5倍
@@ -80,14 +80,14 @@ c_VOID vecPushback(c_Vector *sourceTar, c_DATA *data) {
 	sourceTar->size++;
 }
 
-c_DATA* vecPopback(c_Vector *sourceTar) {
+c_DATA* arrPopback(c_ArrList *sourceTar) {
 	c_DATA *data = sourceTar->elements[sourceTar->size - 1];
 	sourceTar->size--;
 
 	return data;
 }
 
-c_DATA* vecErase(c_Vector *sourceTar, c_INT index) {
+c_DATA* arrErase(c_ArrList *sourceTar, c_INT index) {
 	c_DATA *data = sourceTar->elements[index];
 	for (c_INT i = index; i < sourceTar->size; i++) {
 		sourceTar->elements[i] = sourceTar->elements[i + 1];
@@ -98,7 +98,7 @@ c_DATA* vecErase(c_Vector *sourceTar, c_INT index) {
 	return data;
 }
 
-c_DATA* vecEraseOfValue(c_Vector *sourceTar, c_DATA *data, c_INT begin) {
+c_DATA* arrEraseOfValue(c_ArrList *sourceTar, c_DATA *data, c_INT begin) {
 	c_INT findindex = 0;
 	for (c_INT i = begin; i < sourceTar->size; i++) {
 		if (sourceTar->operate(sourceTar->elements[i], data, c_EQUAL)) {
@@ -117,15 +117,15 @@ c_DATA* vecEraseOfValue(c_Vector *sourceTar, c_DATA *data, c_INT begin) {
 	return findata;
 }
 
-c_INT vecLength(c_Vector *sourceTar) {
+c_INT arrLength(c_ArrList *sourceTar) {
 	return sourceTar->size;
 }
 
-c_BOOL vecEmpty(c_Vector *sourceTar) {
+c_BOOL arrEmpty(c_ArrList *sourceTar) {
 	return sourceTar->size == 0;
 }
 
-c_BOOL vecContains(c_Vector *sourceTar, c_DATA *data) {
+c_BOOL arrContains(c_ArrList *sourceTar, c_DATA *data) {
 	if (sourceTar->size == 0 || data == C_NULL)
 		return -1;
 
@@ -137,7 +137,7 @@ c_BOOL vecContains(c_Vector *sourceTar, c_DATA *data) {
 	return c_FALSE;
 }
 
-c_VOID vecShrink(c_Vector *sourceTar) {
+c_VOID arrShrink(c_ArrList *sourceTar) {
 	sourceTar->capacity = (sourceTar->size + 5);
 
 	c_DATA **new_elements = C_MALLOC(c_DATA**, sizeof(c_DATA*), sourceTar->capacity);
@@ -148,7 +148,7 @@ c_VOID vecShrink(c_Vector *sourceTar) {
 	sourceTar->elements = new_elements;
 }
 
-c_VOID vecCopy(c_Vector *directionTar, c_Vector *sourceTar) {
+c_VOID arrCopy(c_ArrList *directionTar, c_ArrList *sourceTar) {
 	C_FREE(directionTar->elements);
 
 	directionTar->size = sourceTar->size;
@@ -159,7 +159,7 @@ c_VOID vecCopy(c_Vector *directionTar, c_Vector *sourceTar) {
 	}
 }
 
-c_VOID vecClear(c_Vector *sourceTar) {
+c_VOID arrClear(c_ArrList *sourceTar) {
 	C_FREE(sourceTar->elements);
 
 	sourceTar->size = 0;
@@ -167,19 +167,19 @@ c_VOID vecClear(c_Vector *sourceTar) {
 	sourceTar->elements = C_MALLOC(c_DATA**, sizeof(c_DATA*), sourceTar->capacity);
 }
 
-c_DATA* vecAt(c_Vector *sourceTar, c_INT index) {
+c_DATA* arrAt(c_ArrList *sourceTar, c_INT index) {
 	if (index < 0 || index >= sourceTar->size)
 		index = sourceTar->size - 1;
 
 	return sourceTar->elements[index];
 }
 
-c_VOID vecExtend(c_Vector *sourceTar, c_EXTENDFUN efun) {
+c_VOID arrExtend(c_ArrList *sourceTar, c_EXTENDFUN efun) {
 	for (c_INT i = 0; i < sourceTar->size; i++)
 		efun(sourceTar->elements[i]);
 }
 
-c_VOID vecDestroy(c_Vector *sourceTar) {
+c_VOID arrDestroy(c_ArrList *sourceTar) {
 	C_FREE(sourceTar->elements);
 
 	sourceTar->size = 0;
