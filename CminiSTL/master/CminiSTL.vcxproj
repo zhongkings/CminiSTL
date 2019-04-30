@@ -21,29 +21,29 @@
   <ItemGroup>
     <ClCompile Include="sample\listSample.c" />
     <ClCompile Include="sample\main.c" />
-    <ClCompile Include="sample\Math3Dmain.c" />
+    <ClCompile Include="sample\glSDLMain.c" />
     <ClCompile Include="sample\sinListSample.c" />
     <ClCompile Include="sample\SortAlgTimer.c" />
     <ClCompile Include="sample\stackSample.c" />
-    <ClCompile Include="sample\stduyMain.c" />
+    <ClCompile Include="sample\strbSample.c" />
     <ClCompile Include="sample\strSample.c" />
     <ClCompile Include="sample\arrSample.c" />
     <ClCompile Include="src\c_Algorithm.c" />
     <ClCompile Include="src\c_douNode.c" />
     <ClCompile Include="src\c_List.c" />
     <ClCompile Include="src\c_Queue.c" />
+    <ClCompile Include="src\c_Shader.c" />
     <ClCompile Include="src\c_SingleList.c" />
     <ClCompile Include="src\c_sinNode.c" />
     <ClCompile Include="src\c_Stack.c" />
     <ClCompile Include="src\c_String.c" />
+    <ClCompile Include="src\c_StringBuffer.c" />
     <ClCompile Include="src\c_Timer.c" />
     <ClCompile Include="src\c_ArrList.c" />
-    <ClCompile Include="study\dalaoPolynomial.c" />
-    <ClCompile Include="study\expression.c" />
-    <ClCompile Include="study\myAlgorithm.c" />
-    <ClCompile Include="study\polynomial.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\3dmath\c_MatCalculate.h" />
+    <ClInclude Include="include\3dmath\c_Matrix.h" />
     <ClInclude Include="include\3dmath\c_VecCalculate.h" />
     <ClInclude Include="include\3dmath\c_Vector.h" />
     <ClInclude Include="include\c_Algorithm.h" />
@@ -53,14 +53,21 @@
     <ClInclude Include="include\c_SingleList.h" />
     <ClInclude Include="include\c_Stack.h" />
     <ClInclude Include="include\c_String.h" />
+    <ClInclude Include="include\c_StringBuffer.h" />
     <ClInclude Include="include\c_Timer.h" />
     <ClInclude Include="include\c_ArrList.h" />
+    <ClInclude Include="include\glsl\c_Shader.h" />
     <ClInclude Include="include\Node\c_douNode.h" />
     <ClInclude Include="include\Node\c_sinNode.h" />
     <ClInclude Include="include\sample\sample.h" />
     <ClInclude Include="include\sample\util.h" />
     <ClInclude Include="include\wrapper\c_Wrapper.h" />
-    <ClInclude Include="study\ZUCC_DataStructs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glsl\line.frag" />
+    <None Include="glsl\line.vert" />
+    <None Include="glsl\triangle.frag" />
+    <None Include="glsl\triangle.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -114,7 +121,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\Code\MiniSTL\CminiSTL\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Code\MiniSTL\CminiSTL\glad\include;D:\Code\MiniSTL\CminiSTL\include;D:\Code\MiniSTL\CminiSTL\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Code\MiniSTL\CminiSTL\glad\lib;D:\Code\MiniSTL\CminiSTL\SDL2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,6 +135,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>D:\Code\MiniSTL\CminiSTL\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glad.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

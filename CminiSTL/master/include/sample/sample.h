@@ -12,8 +12,5 @@ void Listmain();
 void sinListmain();
 void Stackmain();
 void Stringmain();
-void Math3Dmain();
-
-
-//ѧϰ
-void stduyMain();
+void glSDLMain();
+void strbSample();

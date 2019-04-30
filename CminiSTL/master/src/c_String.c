@@ -2,10 +2,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#define ENDCHARBIT 1
+
 
 c_String* strAssignStr(c_String *sourceTar) {
 	c_String *newStr = C_MALLOC(c_String*, sizeof(c_String), 1);
+	newStr->type = c_StringType;
 	newStr->length = sourceTar->length;
 	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length);
 	if (newStr->chars == C_NULL) return C_NULL;
@@ -16,14 +17,15 @@ c_String* strAssignStr(c_String *sourceTar) {
 
 c_String* strAssignChars(c_CHAR *source) {
 	c_String *newStr = C_MALLOC(c_String*, sizeof(c_String), 1);
+	newStr->type = c_StringType;
 	newStr->length = strlen(source);
-	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + ENDCHARBIT);
+	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + C_ENDCHARBIT);
 	if (newStr->chars == C_NULL) return C_NULL;
 	
 	for (int i = 0; i < newStr->length; i++)
 		newStr->chars[i] = source[i];
 
-	newStr->chars[newStr->length] = '\0';
+	newStr->chars[newStr->length] = C_STOPEND;
 	return newStr;
 }
 
@@ -33,13 +35,14 @@ c_String* strAssignCharsoffset(c_CHAR *source, c_INT begin, c_INT end) {
 	if (end >= len || begin >= end) return C_NULL;
 
 	c_String *newStr = C_MALLOC(c_String*, sizeof(c_String), 1);
+	newStr->type = c_StringType;
 	newStr->length = (end - begin) + 1;
-	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + ENDCHARBIT); //这一步加多一个是结尾符的
+	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + C_ENDCHARBIT); //这一步加多一个是结尾符的
 	if (newStr->chars == C_NULL) return C_NULL;
 	for (int i = begin, j = 0; i <= end; i++, j++)
 		newStr->chars[j] = source[i];
 
-	newStr->chars[newStr->length] = '\0';
+	newStr->chars[newStr->length] = C_STOPEND;
 	return newStr;
 }
 
@@ -47,12 +50,13 @@ c_String* strAssignStroffset(c_String *sourceTar, c_INT begin, c_INT end) {
 	if (end >= sourceTar->length || begin >= end) return C_NULL;
 
 	c_String *newStr = C_MALLOC(c_String*, sizeof(c_String), 1);
+	newStr->type = c_StringType;
 	newStr->length = (end - begin) + 1;
-	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + ENDCHARBIT); //这一步加多一个是结尾符的
+	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + C_ENDCHARBIT); //这一步加多一个是结尾符的
 	if (newStr->chars == C_NULL) return C_NULL;
 	for (int i = begin, j = 0; i <= end; i++, j++)
 		newStr->chars[j] = sourceTar->chars[i];
-	newStr->chars[newStr->length] = '\0';
+	newStr->chars[newStr->length] = C_STOPEND;
 	return newStr;
 }
 
@@ -60,14 +64,14 @@ c_String* strAssignStroffset(c_String *sourceTar, c_INT begin, c_INT end) {
 c_String* strLinks(c_String *sourceTar1, c_String *sourceTar2) {
 	c_String *newStr = C_MALLOC(c_String*, sizeof(c_String), 1);
 	newStr->length = sourceTar1->length + sourceTar2->length;
-	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + ENDCHARBIT); //这一步加多一个是结尾符的
+	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + C_ENDCHARBIT); //这一步加多一个是结尾符的
 	if (newStr->chars == C_NULL) return C_NULL;
 	int j = 0;
 	for (int i = 0; i < sourceTar1->length; i++, j++)
 		newStr->chars[j] = sourceTar1->chars[i];
 	for (int i = 0; i < sourceTar2->length; i++, j++)
 		newStr->chars[j] = sourceTar2->chars[i];
-	newStr->chars[newStr->length] = '\0';
+	newStr->chars[newStr->length] = C_STOPEND;
 
 	return newStr;
 }
@@ -204,12 +208,12 @@ c_String* strSubstring(c_String *sourceTar, c_INT begin, c_INT end) {
 
 	c_String *newStr = C_MALLOC(c_String*, sizeof(c_String), 1);
 	newStr->length = (end - begin) + 1;
-	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + ENDCHARBIT); //这一步加多一个是结尾符的
+	newStr->chars = C_MALLOC(c_CHAR*, sizeof(c_CHAR), newStr->length + C_ENDCHARBIT); //这一步加多一个是结尾符的
 	if (newStr->chars == C_NULL) return C_NULL;
 
 	for (int i = begin, j = 0; i <= end; i++, j++)
 		newStr->chars[j] = sourceTar->chars[i];
-	newStr->chars[newStr->length] = '\0';
+	newStr->chars[newStr->length] = C_STOPEND;
 
 	return newStr;
 }

@@ -10,7 +10,7 @@ typedef struct {
 } c_ArrList;
 
 c_ArrList* arrCreate();
-c_ArrList* arrCreateformLength(c_INT capacity);
+c_ArrList* arrCreateformCapacity(c_INT capacity);
 c_ArrList* arrCreateformVector(c_ArrList *source);
 
 c_VOID arrInsert(c_ArrList *sourceTar, c_DATA *data, c_INT index);

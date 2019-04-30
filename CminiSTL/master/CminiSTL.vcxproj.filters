@@ -17,9 +17,6 @@
     <Filter Include="include\sample">
       <UniqueIdentifier>{130d45c2-3827-4c49-983d-1c71d74225c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="学习数据结构">
-      <UniqueIdentifier>{f3ac55bb-71ea-4796-aae1-de4d7813017b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\Wrapper">
       <UniqueIdentifier>{d8564ebc-9ff1-486e-b39e-b398b2e31b16}</UniqueIdentifier>
     </Filter>
@@ -28,6 +25,12 @@
     </Filter>
     <Filter Include="include\3dmath">
       <UniqueIdentifier>{4eada5fc-878f-4fcc-be45-32f86195bcf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="glsl">
+      <UniqueIdentifier>{fbd25d5a-b8ba-4cd0-bc24-8fe2a9376b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\glsl">
+      <UniqueIdentifier>{c7eb27b0-3b59-43ed-944c-1e5a9a5525b7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,29 +79,23 @@
     <ClCompile Include="src\c_Queue.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="study\dalaoPolynomial.c">
-      <Filter>学习数据结构</Filter>
-    </ClCompile>
-    <ClCompile Include="study\myAlgorithm.c">
-      <Filter>学习数据结构</Filter>
-    </ClCompile>
-    <ClCompile Include="study\polynomial.c">
-      <Filter>学习数据结构</Filter>
-    </ClCompile>
-    <ClCompile Include="sample\stduyMain.c">
-      <Filter>sample</Filter>
-    </ClCompile>
-    <ClCompile Include="study\expression.c">
-      <Filter>学习数据结构</Filter>
-    </ClCompile>
     <ClCompile Include="sample\arrSample.c">
       <Filter>sample</Filter>
     </ClCompile>
     <ClCompile Include="src\c_ArrList.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="sample\Math3Dmain.c">
+    <ClCompile Include="sample\glSDLMain.c">
       <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_StringBuffer.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="sample\strbSample.c">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c_Shader.c">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,9 +135,6 @@
     <ClInclude Include="include\c_Queue.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="study\ZUCC_DataStructs.h">
-      <Filter>学习数据结构</Filter>
-    </ClInclude>
     <ClInclude Include="include\wrapper\c_Wrapper.h">
       <Filter>include\Wrapper</Filter>
     </ClInclude>
@@ -153,5 +147,31 @@
     <ClInclude Include="include\3dmath\c_VecCalculate.h">
       <Filter>include\3dmath</Filter>
     </ClInclude>
+    <ClInclude Include="include\c_StringBuffer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\3dmath\c_MatCalculate.h">
+      <Filter>include\3dmath</Filter>
+    </ClInclude>
+    <ClInclude Include="include\3dmath\c_Matrix.h">
+      <Filter>include\3dmath</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glsl\c_Shader.h">
+      <Filter>include\glsl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glsl\triangle.vert">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="glsl\triangle.frag">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="glsl\line.frag">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="glsl\line.vert">
+      <Filter>glsl</Filter>
+    </None>
   </ItemGroup>
 </Project>

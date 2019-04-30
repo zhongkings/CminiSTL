@@ -16,7 +16,7 @@ c_ArrList* arrCreate() {
 	return newVec;
 }
 
-c_ArrList* arrCreateformLength(c_INT capacity) {
+c_ArrList* arrCreateformCapacity(c_INT capacity) {
 	if (capacity < 0) return C_NULL;
 
 	c_ArrList * newVec = C_MALLOC(c_ArrList*, sizeof(c_ArrList), 1);
