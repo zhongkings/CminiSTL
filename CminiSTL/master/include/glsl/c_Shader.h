@@ -11,7 +11,7 @@ typedef struct {
 
 c_Shader* shCreate(const GLchar *vert, const GLchar *frag);
 c_Shader* shCreateinGeom(const GLchar *vert, const GLchar *frag, const GLchar *geom);
-GLvoid shBegin(c_Shader *sourceTar);
+GLvoid shBegin(const c_Shader *sourceTar);
 GLvoid shSetBool(const GLchar *name, GLint value);
 GLvoid shSetInt(const GLchar *name, GLint value);
 GLvoid shSetFloat(const GLchar *name, GLfloat value);

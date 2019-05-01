@@ -132,7 +132,7 @@ inline static c_Matrix4x4f mat4Mirror(c_Matrix4x4f const*const m4f, c_Vec3f cons
 }
 //Projection
 inline static c_Matrix4x4f mat4Perspective(c_FLOAT fovy, c_FLOAT aspect, c_FLOAT znear, c_FLOAT zfar) {
-	c_FLOAT const tanHalfFovy = tan(fovy / 2.0f);
+	c_FLOAT const tanHalfFovy = (c_FLOAT)tan(fovy / 2.0f);
 	c_Matrix4x4f result = mat4fCreateDiag(0.0f);
 	result.m[0][0] = 1.0f / (aspect * tanHalfFovy);
 	result.m[1][1] = 1.0f / tanHalfFovy;

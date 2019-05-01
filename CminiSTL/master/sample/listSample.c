@@ -2,6 +2,7 @@
 #include "c_Algorithm.h"
 #include "c_Timer.h"
 #include "sample/sample.h"
+#include <time.h>
 
 c_VOID listIntPushback(c_List *sourceTar, c_INT i) {
 	c_INT *ptr = C_MALLOC(c_INT*, sizeof(c_INT), 1);

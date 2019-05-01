@@ -7,11 +7,11 @@
 #include "sample/sample.h"
 #include "glsl/c_Shader.h"
 
-c_BOOL quitflag = c_FALSE;
-SDL_Window *app = C_NULL;
-SDL_GLContext *glContext = C_NULL;
-SDL_Event e;
-c_Matrix4x4f model;
+static c_BOOL quitflag = c_FALSE;
+static SDL_Window *sdlWindow = C_NULL;
+static SDL_GLContext *glContext = C_NULL;
+static SDL_Event e;
+static c_Matrix4x4f model;
 static GLint x = 800;
 static GLint y = 600;
 
@@ -25,7 +25,7 @@ static void HandleEvent(SDL_Event *e) {
 	if (e->type == SDL_QUIT)
 		quitflag = c_TRUE;
 	else if (e->type == SDL_WINDOWEVENT) {
-		SDL_GetWindowSize(app, &x, &y);
+		SDL_GetWindowSize(sdlWindow, &x, &y);
 		glViewport(0, 0, x, y);
 	}
 	else if (e->type == SDL_KEYDOWN) {
@@ -71,6 +71,7 @@ static GLuint getVertexBuffer(c_FLOAT *vertex, c_INT vlen) {
 
 	return vbo;
 }
+
 static GLuint getVertexArray(c_INT vbo) {
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	GLuint vao = 0;
@@ -87,36 +88,32 @@ static GLuint getVertexArray(c_INT vbo) {
 
 int main() {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	app = SDL_CreateWindow("CminiSTL", 400, 100, x, y, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
-	glContext = SDL_GL_CreateContext(app);
-	gladLoadGL();
+	sdlWindow = SDL_CreateWindow("CminiSTL", 400, 100, x, y, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+	glContext = SDL_GL_CreateContext(sdlWindow);
+	gladLoadGL(); //∆Ù”√glad
 	glClearColor(0, 0, 0, 1);
 	glViewport(0, 0, x, y);
 
 	c_Shader *shader = shCreate("./glsl/triangle.vert", "./glsl/triangle.frag");
 	c_Shader *lineShader = shCreate("./glsl/line.vert", "./glsl/line.frag");
 
-	GLuint vbo = getVertexBuffer(triangle_vertices, sizeof(triangle_vertices));
-	GLuint vao = getVertexArray(vbo);
+	GLuint triangle_vao = getVertexArray(getVertexBuffer(triangle_vertices, sizeof(triangle_vertices)));
 
 	model = mat4fCreateDiag(1.0f);
 	model = mat4TranslateXYZ(&model, 400, 300, 0);
 	model = mat4ScaleSetXYZ(&model, 150, 150, 0);
 	c_Matrix4x4f projection = mat4OrthoRH(0, x, 0, y, 0.0f, 1.0f);
-	c_Matrix4x4f mp = mat4x4fMul(&projection, &model);
-
 	while (!quitflag) {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		//Draw triangles
 		shBegin(shader);
-		mp = mat4fCreateDiag(1.0f);
 		shSetMat4("model", &model);
 		shSetMat4("projection", &projection);
-		glBindVertexArray(vao);
+		glBindVertexArray(triangle_vao);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
-		SDL_GL_SwapWindow(app);
+		SDL_GL_SwapWindow(sdlWindow);
 		while (SDL_PollEvent(&e) != 0)
 			HandleEvent(&e);
 	}
@@ -124,7 +121,7 @@ int main() {
 	shDerstory(shader);
 	shDerstory(lineShader);
 	SDL_GL_DeleteContext(glContext);
-	SDL_DestroyWindow(app);
+	SDL_DestroyWindow(sdlWindow);
 	SDL_Quit();
 
 	return 0;
